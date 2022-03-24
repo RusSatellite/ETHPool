@@ -1,0 +1,10 @@
+- Years of experience as a front-end developer.
+	This the basic question, because quality of all the technical answers will be based on the experinces
+- Framworks or libraries used by on working
+	This will determined the way of technical answers
+- Detailed teachnical question on that
+	Techinical questions on the frontend developing.
+	In case of react, questions would be about advantage of React, hooks(useStates, useEffect, useRef, useContext), difference of JS and TS, the usage of Redux
+- Some example website which developed and reference of clients
+	Asking about the published website and github repo, and some questions with the github code, if exists
+	Asking about the reference on the company to confirm the trust

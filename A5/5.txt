@@ -1,0 +1,4 @@
+B) and C) are true.
+When *T* deposits the reward, only *A* has a stake.
+Therefore, the reward is only for *A*.
+So B) and C) are true.

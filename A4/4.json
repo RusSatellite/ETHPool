@@ -1,0 +1,94 @@
+const Matrix = [2, 3, 4, 8, 5, 7, 9, 12, 1, 0, 6, 10];
+
+// Function to validate 
+// Return true if it is valid position.
+// Return false if it is invalid position.
+function isValidPosition(NumRows, NumColumns, row, col) {
+    if (row < 0 || row >= NumRows) {
+        return false;
+    }
+    if (col < 0 || col >= NumColumns) {
+        return false;
+    }
+    return true;
+}
+
+// Function to get element from matrix 
+// The inMatrixElements will be 1D array.
+// So, matrix[row][column] will be inMatrixElement[row * NumColumns + column]
+// Return element from matrix if it is valid position
+// Return UNDEFINED if it is invalid position
+const UNDEFINED = -1;
+function getValueInMatrix(inMatrixElements, NumRows, NumColumns, row, col) {
+    if (isValidPosition(NumRows, NumColumns, row, col)) {
+        return inMatrixElements[row * NumColumns + col];
+    }
+    return UNDEFINED;
+}
+
+// Function to get next row and col 
+function getNextPosition(row, col, direction) {
+    switch (direction) {
+        case 0:
+            return [row, col + 1];
+        case 1:
+            return [row + 1, col];
+        case 2:
+            return [row, col - 1];
+        case 3:
+            return [row - 1, col];
+        default:
+            return [row, col];
+    }
+}
+
+// Funtion to convert the matrix to string according to rule
+function BuildStringFromMatrix(inMatrixElements, NumRows, NumColumns)
+{
+    // check the error
+    if (inMatrixElements.length != NumRows * NumColumns) {
+        return "Error: The length of the array does not match the required length."
+    }
+    let result = "\"";
+    // index 
+    let index = 0;
+    let row = 0, col = 0;
+    // direction
+    // 0: direction to right
+    // 1: direction to bottom
+    // 2: direction to left
+    // 3: direction to up
+    let direction = 0;
+    // array to check if it is visied or not
+    let visited = [];
+    for (let i = 0; i < NumRows; i++) {
+        visited.push(new Array(NumColumns).fill(false));
+    }
+    // run loop
+    while (true) {
+        // convert current element to string
+        if (index > 0) {
+            result += ", ";
+        }
+        result += getValueInMatrix(inMatrixElements, NumRows, NumColumns, row, col);
+        // updated the visited array
+        visited[row][col] = true;
+        // check it is finished
+        if (++index >= NumRows * NumColumns) {
+            return result + "\"";
+        }
+        // get next position and direction
+        let nextRow, nextCol;
+        while (true) {
+            [nextRow, nextCol] = getNextPosition(row, col, direction);
+            if (isValidPosition(NumRows, NumColumns, nextRow, nextCol) && !visited[nextRow][nextCol]) {
+                break;
+            }
+            direction = (direction + 1) % 4;
+        }
+        row = nextRow;
+        col = nextCol;
+    };
+}
+
+console.log(BuildStringFromMatrix(Matrix, 3, 4));

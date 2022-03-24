@@ -1,0 +1,21 @@
+Let's divide 100 by n.
+That is, 100 = n * m.
+So the stairs are divided into m groups, and one group is n stairs.
+Stage 1.
+Drop the PS5 onto stairs n, 2n, ..., (m-1)*n unless the PS5 breaks down.
+Breaking at stage n means that the highest survival stage is between 1 and n-1.
+In particular, if it survived onto (m-1)*n stair, the highest survival step is (m-1)*n~100.
+Step 2.
+Assume that k is broken on the stairs.
+Drop another PS5 at stair (k-1)*n+1, (k-1)*n+2, k*n-1.
+So we can find the highest survival stairs for PS5.
+
+The total number of drops is 
+For first stage, it is m-1.
+For second stage, it is n-1.
+Total m+n-2.
+
+For this case, n=10, m=10.
+The worst case would be if it breaks on the 90th floor = 9 drops.
+And then we try 81, 82, 83, 84, 85, 86, 87, 88 and 89 = another 9 drops.
+Total, 18.
